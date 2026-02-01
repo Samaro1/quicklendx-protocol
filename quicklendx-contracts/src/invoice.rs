@@ -589,11 +589,7 @@ impl InvoiceStorage {
         }
     }
 
-    pub fn remove_category_index(
-        env: &Env,
-        category: &InvoiceCategory,
-        invoice_id: &BytesN<32>,
-    ) {
+    pub fn remove_category_index(env: &Env, category: &InvoiceCategory, invoice_id: &BytesN<32>) {
         let key = Self::category_key(category);
         if let Some(invoices) = env.storage().instance().get::<_, Vec<BytesN<32>>>(&key) {
             let mut new_invoices = Vec::new(env);
